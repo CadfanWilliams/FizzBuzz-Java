@@ -5,7 +5,40 @@ package fizzbuzz;
 
 public class App {
     public static void fizzbuzz() {
-        // Your code goes here!
+        for(int i = 0; i < 100; i++)
+        {
+            //if multiple of 3 fizz
+            //if multiple of 5 buzz
+            //if both then fizzbuzz
+           if(i % 3 == 0 && i % 5 == 0) //output if multiple of 3 AND 5
+           {
+            System.out.println("FizzBuzz!");
+           }else if((i % 7 == 0 && i % 3 == 0) || (i % 7 == 0 && i % 5 ==0)) //output if multiple of (7 and 3) or (7 and 5)
+           {
+            System.out.println("FizzBang!");
+           }
+           else if(i % 5 == 0 ) //output if multiple of only 5
+           {
+            System.out.println("Buzz!");
+           }
+           else if(i % 3 == 0) //output if multiple of only 3
+           {
+            System.out.println("Fizz");
+           }else if(i % 7 == 0) //output if multiple of only 7
+           {
+            System.out.println("Bang!");
+           }
+           else if( i % 11 == 0)
+           {
+            System.out.println("Bong!");
+           }
+           else{ // Output if not a multiple of 3 / 5 / 7
+            System.out.println(i);
+           }
+
+           
+            
+        }
     }
 
     public static void main(String[] args) {
