@@ -3,42 +3,73 @@
  */
 package fizzbuzz;
 
-public class App {
-    public static void fizzbuzz() {
-        for(int i = 0; i < 100; i++)
-        {
-            //if multiple of 3 fizz
-            //if multiple of 5 buzz
-            //if both then fizzbuzz
-           if(i % 3 == 0 && i % 5 == 0) //output if multiple of 3 AND 5
-           {
-            System.out.println("FizzBuzz!");
-           }else if((i % 7 == 0 && i % 3 == 0) || (i % 7 == 0 && i % 5 ==0)) //output if multiple of (7 and 3) or (7 and 5)
-           {
-            System.out.println("FizzBang!");
-           }
-           else if(i % 5 == 0 ) //output if multiple of only 5
-           {
-            System.out.println("Buzz!");
-           }
-           else if(i % 3 == 0) //output if multiple of only 3
-           {
-            System.out.println("Fizz");
-           }else if(i % 7 == 0) //output if multiple of only 7
-           {
-            System.out.println("Bang!");
-           }
-           else if( i % 11 == 0)
-           {
-            System.out.println("Bong!");
-           }
-           else{ // Output if not a multiple of 3 / 5 / 7
-            System.out.println(i);
-           }
+import java.util.ArrayList;
+import java.util.Collections;
 
-           
+//if divisable by 3 fizz
+// if divisable by 5 buzz
+/// if divisable by 3 + 5 then fizzbuzz
+// if divisable by 7 then bang
+// if divisable by 11 then bong
+
+//First Check if divisable by 11 and if so print bang
+//Then Check if its divisable by 7 and 5 or 7 and 3 but 
+public class App {
+    
+    public static void fizzbuzz() {
+        String cleanOut;
+        for (int i = 1; i < 300; i++) {
+            cleanOut = "";
+            ArrayList<String> output = new ArrayList<>();
+            if (isDivBy(i, 3)) {
+                output.add("Fizz");
+            }
+            if (isDivBy(i, 13)) {
+                output.add("Fezz");
+            }
+            if (isDivBy(i, 5)) {
+                output.add("Buzz");
+            }
+            if (isDivBy(i, 7)) {
+                output.add("Bang");
+            }
+            if (isDivBy(i, 11)) {
+                if(isDivBy(i, 13))
+                {
+                    output.clear();
+                    output.add("Fezz");
+                    output.add("Bong");
+                }
+                else{
+                    output.add("Bong");
+                }
+                
+            }
+            if(isDivBy(i, 17))
+            {
+             Collections.reverse(output);   
+            }
+
+            if (output.size() == 0) 
+            {
+                output.add(Integer.toString(i));
+            }
+
+            for(int y = 0; y < output.size(); y++)
+            {
+                cleanOut += output.get(y);
+            }
+               
+            System.out.println(cleanOut); 
+            
             
         }
+
+    }
+
+    public static boolean isDivBy(int i, int divNum) {
+        // checking if int i is divisable by int divNum
+        return i % divNum == 0;
     }
 
     public static void main(String[] args) {
